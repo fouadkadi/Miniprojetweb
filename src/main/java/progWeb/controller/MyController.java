@@ -57,7 +57,7 @@ public class MyController {
 		}
 	}
 
-	@RequestMapping(value = "/character", method = RequestMethod.GET)
+	@RequestMapping(value = "/character", method = RequestMethod.POST)
 	public void choiceCharacter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String charName = request.getParameter("name");
 		Character chosen = null;
