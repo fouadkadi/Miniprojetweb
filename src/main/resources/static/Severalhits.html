@@ -21,8 +21,7 @@
 
 
     <div id="takeOrDodge" >
-        <p style="color:red;" id="touche" > toché </p>
-        <p style="color:green;" id="esquive"> esquivé </p>
+        <p style="color:red;" id="KO" > KO </p>
         <a href="/showCharacter.html" id="ficheperso">Voir la fiche du personnage</a>
     </div>
     <div>
@@ -38,6 +37,8 @@
     var dodgeValue=parseFloat(findValueCookie("dodge"));
     var degaaccu=0;
 
+    document.getElementById("KO").style.display = "none";
+
 
 function degats(){
 
@@ -52,6 +53,10 @@ function degats(){
      {
      degaaccu+=dommage;
      document.getElementById("nbDammage").value = degaaccu;
+     }
+     if( degaaccu==parseFloat(HPValue))
+     {
+         document.getElementById("KO").style.display = "initial";
      }
 
 
