@@ -22,10 +22,10 @@
 
     <div id="takeOrDodge" >
         <p style="color:red;" id="KO" > KO </p>
-        <a href="/showCharacter.html" id="ficheperso">Voir la fiche du personnage</a>
+        <a href="/chooseCharacter.html" id="choixperso">Choisir un personnage</a>
     </div>
     <div>
-        <button id="submitButton" type="submit" style="display:none disabled">Souffrir</button>
+        <button id="submitButton" type="submit" style="display:none disabled">Prendre des degats</button>
     </div>
 </form>
 
@@ -36,6 +36,7 @@
     var HPValue= findValueCookie("HP");
     var dodgeValue=parseFloat(findValueCookie("dodge"));
     var degaaccu=0;
+    document.getElementById("choixperso").style.display = "none";
 
     document.getElementById("KO").style.display = "none";
 
@@ -49,14 +50,16 @@ function degats(){
     var dommage =parseFloat(document.getElementById("nbDammagetoacc").value);
 
     if(dodgeValue<Math.random()){
-     if( (degaccu+dommage)<= parseFloat(HPValue))
+     if( (degaaccu+dommage)<= parseFloat(HPValue))
      {
      degaaccu+=dommage;
      document.getElementById("nbDammage").value = degaaccu;
      }
-     if( degaaccu==parseFloat(HPValue))
+     if( 0==parseFloat(HPValue))
      {
          document.getElementById("KO").style.display = "initial";
+         document.getElementById("submitButton").disabled= true;
+         document.getElementById("choixperso").style.display = "initial";
      }
 
 
