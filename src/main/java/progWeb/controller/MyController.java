@@ -82,7 +82,7 @@ public class MyController {
 			response.addCookie(new Cookie("HP", "" + chosen.getHpMax()));
 			response.addCookie(new Cookie("attack", "" + chosen.getAttack()));
 			response.addCookie(new Cookie("dodge", "" + chosen.getDodgeProbability()));
-			response.addCookie(new Cookie("nameM", "" + chosenmonster.getHpMax()));
+			response.addCookie(new Cookie("nameM", "" + chosenmonster.getName()));
 			response.addCookie(new Cookie("HPM", "" + chosenmonster.getHpMax()));
 			response.addCookie(new Cookie("attackM", "" + chosenmonster.getAttack()));
 			response.addCookie(new Cookie("dodgeM", "" + chosenmonster.getDodgeProbability()));
