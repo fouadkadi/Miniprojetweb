@@ -48,9 +48,11 @@ function degats(){
     var dommage =parseFloat(document.getElementById("nbDammagetoacc").value);
 
     if(dodgeValue<Math.random()){
-     if( degaccu
+     if( (degaccu+dommage)<= parseFloat(HPValue))
+     {
      degaaccu+=dommage;
      document.getElementById("nbDammage").value = degaaccu;
+     }
 
 
      console.log("touché");
