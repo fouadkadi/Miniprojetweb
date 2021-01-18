@@ -24,14 +24,14 @@ public class Universe {
 
 		Character elf = new Character();
 		elf.setName("Legolas");
-		elf.setHpMax(70);
+		elf.setHpMax(30);
 		elf.setAttack(15);
 		elf.setDodgeProbability(0.5);
 		characters.add(elf);
 
 		Character rat = new Character();
 		rat.setName("rat");
-		rat.setHpMax(100);
+		rat.setHpMax(1);
 		rat.setAttack(10);
 		monsters.add(rat);
 

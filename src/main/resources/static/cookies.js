@@ -7,6 +7,16 @@ function findValueCookie(key){
 	    return keyCookie.split('=')[1];
 	    }
 	}
+
+function chargeinfomonstre()
+{
+document.getElementById("nameValueM").innerHTML = findValueCookie("nameM");
+document.getElementById("attackValueM").innerHTML = findValueCookie("attackM");
+document.getElementById("HPValueM").innerHTML = findValueCookie("HPM");
+document.getElementById("dodgeValueM").innerHTML = findValueCookie("dodgeM");
+}
+
+
 function chargeinfo()
 {
 //cherche et affiche le nom du personnage
@@ -19,11 +29,13 @@ document.getElementById("nameValueM").innerHTML = findValueCookie("nameM");
 document.getElementById("attackValueM").innerHTML = findValueCookie("attackM");
 document.getElementById("HPValueM").innerHTML = findValueCookie("HPM");
 document.getElementById("dodgeValueM").innerHTML = findValueCookie("dodgeM");
+document.getElementById("spanname").innerHTML = findValueCookie("name");
 document.getElementById("T").style.display = "none";
 document.getElementById("E").style.display = "none";
 document.getElementById("TM").style.display = "none";
 document.getElementById("EM").style.display = "none";
 }
+
 function voyantP(ind)
  {if(ind==0)
     {document.getElementById("T").style.display = "none";
@@ -42,6 +54,9 @@ function voyantP(ind)
     document.getElementById("EM").style.display = "none";
     }
 };
+
+
+
 
 
 	

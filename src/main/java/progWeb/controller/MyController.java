@@ -89,67 +89,29 @@ public class MyController {
 		response.sendRedirect("/showCharacter.html");
 	}
 
-	/*@RequestMapping(value = "/character", method = RequestMethod.GET)
-	public void showCharacter(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, IOException {
-		String descriptif = "";
-		for (Cookie c : request.getCookies()) {
-			System.out.println(c.getName() + c.getValue());
-			if (c.getName().equals("name")) {
-				descriptif += "name :" + c.getValue() + "\n";
-			}
-			if (c.getName().equals("attack")) {
-				descriptif += "attack :" + c.getValue() + "\n";
-			}
-			if (c.getName().equals("HP")) {
-				descriptif += "HP :" + c.getValue() + "\n";
-			}
-		}
-		response.getOutputStream().write(descriptif.getBytes("UTF-8"));
-
-	}
-*/
-	@RequestMapping(value = "/takeDammage", method = RequestMethod.GET)
-	public void takeDammage(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, IOException {
-
-		String damStr = request.getParameter("dammage");
-		System.out.println(damStr);
-		if (damStr != null) {
-			int dammage = Integer.parseInt(damStr);
-			int hp = 0;
-			for (Cookie c : request.getCookies()) {
-
-				if (c.getName().equals("HP")) {
-					hp = Integer.parseInt(c.getValue());
-				}
-			}
-			hp = (hp - dammage > 0) ? hp - dammage : 0;
-			response.addCookie(new Cookie("HP", "" + hp));
-		}
-		response.sendRedirect("/showCharacter.html");
-
-
-	}
-
-	@RequestMapping(value = "/nextFoe", method = RequestMethod.GET)
+	@RequestMapping(value = "/netfighter", method = RequestMethod.POST)
 	public void nextFoe(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, IOException {
 		int previousFoe = -1;
 		for (Cookie c : request.getCookies()) {
-			if (c.getName().equals("foeNumber")) {
+			if (c.getName().equals("monsterid")) {
 				previousFoe = Integer.parseInt(c.getValue());
 			}
 		}
+
+
 		try {
 			Character foe = Universe.getMonsters().get(previousFoe + 1);
-			response.addCookie(new Cookie("foeNumber", "" + (previousFoe + 1)));
-			response.addCookie(new Cookie("foeName", foe.getName()));
-			response.addCookie(new Cookie("foeHP", " " + foe.getHpMax()));
-			response.addCookie(new Cookie("foeAttack", "" + foe.getAttack()));
+			response.addCookie(new Cookie("monsterid", "" + (previousFoe + 1)));
+			response.addCookie(new Cookie("nameM",""+ foe.getName()));
+			response.addCookie(new Cookie("HPM", "" + foe.getHpMax()));
+			response.addCookie(new Cookie("attackM", "" + foe.getAttack()));
+			response.addCookie(new Cookie("dodgeM", "" + foe.getDodgeProbability()));
 		} catch (IndexOutOfBoundsException e) {
 			response.getOutputStream().write("Tous les ennemis sont vaincus".getBytes("UTF-8"));
 		}
+		response.getOutputStream().write("pas tous".getBytes("UTF-8"));
+
 	}
 
 }

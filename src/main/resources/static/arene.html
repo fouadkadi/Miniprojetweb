@@ -5,7 +5,10 @@
     <title>Arene</title>
 
     <link rel="stylesheet" href="bootstrap.css">
+    <script src="bootstrap.js"></script>
     <script src="cookies.js"></script>
+
+
 </head>
 <body style="background-image: url('back.jpg');background-size: cover;">
 <div class="container-fluid p-4 m-4" >
@@ -58,23 +61,40 @@
     </div>
 
     <div class="d-grid gap-2 mx-4">
-        <button class="btn btn-danger" type="button" onclick="start();">Fight!</button>
+        <button class="btn btn-danger" id="fightb" type="button" onclick="start();">Fight!</button>
+        <button class="btn btn-success" id="nextbtn" type="button" style="display:none;" onclick="loadnext();">Affronter le suivant</button>
+        <a class="btn btn-dark" type="button" style="display:none;" href="/chooseCharacter.html" >Retour au choix du personnage</a>
+        <div class="card" id="defeat" style="display:none;">
+            <div class="card-body">
+                <h5 class="card-title">Hello <span id="spanname"></span> </h5>
+                <p class="card-text">
+                    Vous avez battu <span id="spanmon"></span> Monstres.
+                </p>
+                <a href="/chooseCharacter.html" class="btn btn-primary">Retour au choix du personnage</a>
+            </div>
+        </div>
     </div>
 
 </div>
 
+
+
 <script>
     chargeinfo();
+    var hpmax=parseFloat(findValueCookie("HP"));
+    var doodge=parseFloat(findValueCookie("dodge"));
+    var attack=parseFloat(findValueCookie("attack"));
+    var nbtue=0;
+
 
  async function start()
  {
-    var hpmax=parseFloat(findValueCookie("HP"));
     var hpmaxM=parseFloat(findValueCookie("HPM"));
-    var doodge=parseFloat(findValueCookie("dodge"));
     var doodgeM=parseFloat(findValueCookie("dodgeM"));
-    var attack=parseFloat(findValueCookie("attack"));
     var attackM=parseFloat(findValueCookie("attackM"));
     var randproba=0;
+
+
    while(hpmax>0 && hpmaxM>0)
    { await new Promise(r => setTimeout(r, 1000));
      randproba=Math.random();
@@ -95,10 +115,48 @@
 
    }
 
+   if(hpmax==0){
+    document.getElementById("spanmon").innerHTML = nbtue;
+    document.getElementById("defeat").style.display = "initial";
+    document.getElementById("fightb").disabled=true;
+    document.getElementById("nextbtn").disabled=true;
+
+    }
+    else
+    {
+     nbtue++;
+     document.getElementById("nextbtn").style.display = "initial";
+
+    }
+
+
 
  }
 
+function loadnext()
+{
+
+  var ajax = new XMLHttpRequest();
+  ajax.open('POST', 'netfighter');
+  ajax.onload=function()
+  { if(ajax.status===200)
+    {
+    console.log(ajax.responseText);
+    chargeinfomonstre();
+    }
+    else
+    {
+    console.log('ajax failed');
+    }
+  };
+  ajax.send();
+
+
+}
 </script>
+
+
+
 
 </body>
 </html>
