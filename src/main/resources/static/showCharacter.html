@@ -3,26 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <title>Mon Personnage</title>
-<link rel="stylesheet" href="general.css">
+<link rel="stylesheet" href="bootstrap.css">
 <script src="cookies.js"></script>
 </head>
-<body>
-<div>
-    <p>
-        Nom personnage : <span id="nameValue" class="bold"></span> <br>
-        HP personnage: <span id="HPValue" class="bold" ></span><br>
-        Attaque personnage: <span id="attackValue" class="bold"></span><br>
-        Esquive personnage: <span id="dodgeValue" class="bold"></span><br>
-    </p>
+<body style="background-image: url('back.jpg');background-size: cover;">
+
+<div class="container w-50 py-2 mt-3 bg-light rounded" >
+    <!-- Content here -->
+
+    <div class="card-group">
+        <div class="card">
+            <img src="superhero.png" class="card-img-top p-5" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" id="nameValue">Card title</h5>
+                <p>
+                    HP personnage: <span id="HPValue" class="bold" ></span><br>
+                    Attaque personnage: <span id="attackValue" class="bold"></span><br>
+                    Esquive personnage: <span id="dodgeValue" class="bold"></span><br>
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="monster.png" class="card-img-top p-5" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" id="nameValueM">Card title</h5>
+                <p>
+                    HP monstre: <span id="HPValueM" class="bold" ></span><br>
+                    Attaque monstre: <span id="attackValueM" class="bold"></span><br>
+                    Esquive monstre: <span id="dodgeValueM" class="bold"></span><br>
+                </p>
+
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="d-grid gap-2 mt-2">
+        <a class="btn btn-outline-danger" href="/arene.html" >Lancer le combat</a>
+    </div>
+
+
+
+
+
+
+        </div>
+    </div>
+
 </div>
-<div>
-    <p>
-        Nom  monstre: <span id="nameValueM" class="bold"></span> <br>
-        HP monstre: <span id="HPValueM" class="bold" ></span><br>
-        Attaque monstre: <span id="attackValueM" class="bold"></span><br>
-        Esquive monstre: <span id="dodgeValueM" class="bold"></span><br>
-    </p>
-</div>
+
+
 
 
 
@@ -38,9 +69,6 @@ document.getElementById("attackValueM").innerHTML = findValueCookie("attackM");
 document.getElementById("HPValueM").innerHTML = findValueCookie("HPM");
 document.getElementById("dodgeValueM").innerHTML = findValueCookie("dodgeM");
 </script>
-
-<a href="/takeOrDodgeDammage.html" class ="button">Recevoir un coup</a>
-<a href="/Severalhits.html" class ="button">Recevoir plusieurs coups</a>
 
 
 </body>

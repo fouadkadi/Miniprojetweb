@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Arene</title>
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="cookies.js"></script>
+</head>
+<body style="background-image: url('back.jpg');background-size: cover;">
+<div class="container-fluid p-4 m-4" >
+    <!-- Content here -->
+    <div class="card-columns d-flex justify-content-center">
+
+
+<div class="card mb-3" style="max-width: 540px;margin-right: 5px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="superhero.png" class="card-img-top p-5" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title" id="nameValue">Card title</h5>
+                <p class="card-text">
+                    HP personnage: <span id="HPValue" class="bold" ></span>
+                    <span id="T" class="bold text-danger" >T</span>
+                    <span id="E" class="bold text-success" >E</span><br>
+                    Attaque personnage: <span id="attackValue" class="bold"></span><br>
+                    Esquive personnage: <span id="dodgeValue" class="bold"></span><br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="card mb-3 ml-4" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="monster.png" class="card-img-top p-5" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" id="nameValueM">Card title</h5>
+                    <p class="card-text">
+                        HP monstre: <span id="HPValueM" class="bold" ></span>
+                        <span id="TM" class="bold text-danger" >T</span>
+                        <span id="EM" class="bold text-success" >E</span><br>
+                        Attaque monstre: <span id="attackValueM" class="bold"></span><br>
+                        Esquive monstre: <span id="dodgeValueM" class="bold"></span><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <div class="d-grid gap-2 mx-4">
+        <button class="btn btn-danger" type="button" onclick="start();">Fight!</button>
+    </div>
+
+</div>
+
+<script>
+    chargeinfo();
+
+ async function start()
+ {
+    var hpmax=parseFloat(findValueCookie("HP"));
+    var hpmaxM=parseFloat(findValueCookie("HPM"));
+    var doodge=parseFloat(findValueCookie("dodge"));
+    var doodgeM=parseFloat(findValueCookie("dodgeM"));
+    var attack=parseFloat(findValueCookie("attack"));
+    var attackM=parseFloat(findValueCookie("attackM"));
+    var randproba=0;
+   while(hpmax>0 && hpmaxM>0)
+   { await new Promise(r => setTimeout(r, 1000));
+     randproba=Math.random();
+     if(doodge<randproba)
+     {
+      hpmax-=attackM;
+      hpmax<0?hpmax=0:hpmax=hpmax;
+      voyantP(1);
+      document.getElementById("HPValue").innerHTML = hpmax;
+     }else{voyantP(0);}
+     if(doodgeM<randproba)
+     {
+      hpmaxM-=attack;
+      hpmaxM<0?hpmaxM=0:hpmaxM=hpmaxM;
+      voyantM(1);
+      document.getElementById("HPValueM").innerHTML = hpmaxM;
+     }else{voyantM(0);}
+
+   }
+
+
+ }
+
+</script>
+
+</body>
+</html>

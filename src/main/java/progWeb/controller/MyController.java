@@ -61,7 +61,6 @@ public class MyController {
 	public void choiceCharacter(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String charName = request.getParameter("name");
 		Character chosen = null;
-		String monsterName = request.getParameter("namemonster");
 		Character chosenmonster = null;
 
 		for (Character c : Universe.getCharacters()) {
@@ -69,12 +68,8 @@ public class MyController {
 				chosen = c;
 			}
 		}
-		for (Character c : Universe.getMonsters()) {
-			if (c.getName().equals(monsterName)) {
-				chosenmonster = c;
-			}
-		}
-		if (chosen != null && chosenmonster !=null) {
+
+		if (chosen != null ) {
 			response.setHeader("HP", "" + chosen.getHpMax());
 			response.setHeader("attack", "" + chosen.getAttack());
 			Cookie cookieName = new Cookie("name", charName);
@@ -82,6 +77,10 @@ public class MyController {
 			response.addCookie(new Cookie("HP", "" + chosen.getHpMax()));
 			response.addCookie(new Cookie("attack", "" + chosen.getAttack()));
 			response.addCookie(new Cookie("dodge", "" + chosen.getDodgeProbability()));
+
+			response.addCookie(new Cookie("numberofmns", "" + Universe.getMonsters().size()));
+			chosenmonster=Universe.getMonsters().get(0);
+			response.addCookie(new Cookie("monsterid", "0" ));
 			response.addCookie(new Cookie("nameM", "" + chosenmonster.getName()));
 			response.addCookie(new Cookie("HPM", "" + chosenmonster.getHpMax()));
 			response.addCookie(new Cookie("attackM", "" + chosenmonster.getAttack()));
