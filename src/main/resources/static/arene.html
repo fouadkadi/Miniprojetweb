@@ -141,8 +141,10 @@ function loadnext()
   ajax.onload=function()
   { if(ajax.status===200)
     {
-    console.log(ajax.responseText);
-    chargeinfomonstre();
+    var reponse=ajax.responseText;
+    if(reponse=="Au Suivant!"){  chargeinfomonstre(); }
+     alert(reponse);
+
     }
     else
     {
@@ -150,8 +152,6 @@ function loadnext()
     }
   };
   ajax.send();
-
-
 }
 </script>
 

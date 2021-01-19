@@ -110,7 +110,7 @@ public class MyController {
 		} catch (IndexOutOfBoundsException e) {
 			response.getOutputStream().write("Tous les ennemis sont vaincus".getBytes("UTF-8"));
 		}
-		response.getOutputStream().write("pas tous".getBytes("UTF-8"));
+		response.getOutputStream().write("Au Suivant!".getBytes("UTF-8"));
 
 	}
 
