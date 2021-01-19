@@ -39,23 +39,7 @@ public class MyController {
 		response.sendRedirect("/helloWorld");
 	}
 
-	@RequestMapping(value = "/param", method = RequestMethod.GET)
-	public void showParamFromGet(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, IOException {
-		Map<String, String[]> param = request.getParameterMap();
-		for (Object key : param.keySet()) {
-			System.out.println("" + key + " : " + param.get(key)[0]);
-		}
-	}
-	
-	@RequestMapping(value = "/param", method = RequestMethod.POST)
-	public void showParamFromPost(HttpServletRequest request, HttpServletResponse response)
-			throws UnsupportedEncodingException, IOException {
-		Map<String, String[]> param = request.getParameterMap();
-		for (Object key : param.keySet()) {
-			System.out.println("" + key + " : " + param.get(key)[0]);
-		}
-	}
+
 
 	@RequestMapping(value = "/character", method = RequestMethod.POST)
 	public void choiceCharacter(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -109,6 +93,7 @@ public class MyController {
 			response.addCookie(new Cookie("dodgeM", "" + foe.getDodgeProbability()));
 		} catch (IndexOutOfBoundsException e) {
 			response.getOutputStream().write("Tous les ennemis sont vaincus".getBytes("UTF-8"));
+			return;
 		}
 		response.getOutputStream().write("Au Suivant!".getBytes("UTF-8"));
 

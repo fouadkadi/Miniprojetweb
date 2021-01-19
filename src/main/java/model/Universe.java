@@ -24,7 +24,7 @@ public class Universe {
 
 		Character elf = new Character();
 		elf.setName("Legolas");
-		elf.setHpMax(30);
+		elf.setHpMax(1000);
 		elf.setAttack(15);
 		elf.setDodgeProbability(0.5);
 		characters.add(elf);
@@ -41,7 +41,7 @@ public class Universe {
 		gobelin.setAttack(10);
 		monsters.add(gobelin);		
 
-		Character dragon = new Character("dragon", 3000, 100);
+		Character dragon = new Character("dragon", 50, 100);
 		monsters.add(dragon);
 
 	}
