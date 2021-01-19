@@ -99,4 +99,28 @@ public class MyController {
 
 	}
 
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public void addCharacter(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String charName = request.getParameter("name");
+		String hp = request.getParameter("Hp");
+		String attack = request.getParameter("attack");
+		String doodge = request.getParameter("dodge");
+		String check = request.getParameter("monstre");
+		Character newchar=null;
+		if(check==null){
+		 newchar= new Character(charName,Integer.parseInt(hp),Integer.parseInt(attack),Double.parseDouble(doodge));
+	     Universe.getCharacters().add(newchar);
+		}else
+			{
+				newchar= new Character(charName,Integer.parseInt(hp),Integer.parseInt(attack),Double.parseDouble(doodge));
+				Universe.getMonsters().add(newchar);
+
+
+			}
+		response.sendRedirect("/chooseCharacter.html");
+	}
+
+
 }
+

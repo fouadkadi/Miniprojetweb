@@ -18,6 +18,14 @@ public class Character {
 		this.attack = attack;
 	}
 
+	public Character(String name, int hpMax, int attack,double doodge) {
+		super();
+		this.name = name;
+		this.hpMax = hpMax;
+		this.attack = attack;
+		this.dodgeProbability=doodge;
+	}
+
 
 
 	public String getName() {

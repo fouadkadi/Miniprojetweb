@@ -24,7 +24,7 @@ public class Universe {
 
 		Character elf = new Character();
 		elf.setName("Legolas");
-		elf.setHpMax(1000);
+		elf.setHpMax(100);
 		elf.setAttack(15);
 		elf.setDodgeProbability(0.5);
 		characters.add(elf);
