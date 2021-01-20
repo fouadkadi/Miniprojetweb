@@ -11,6 +11,7 @@ Le projet simule un jeu entre des **personnages** et des **monstres**, chaque ca
 > http://127.0.0.1:8080/chooseCharacter.html
 Cette fenêtre vous permet de choisir votre personnage grâce au nom, mais aussi vous donne la possibilité d'accéder à l'ajout d'un nouveau personnage ou monstre.
 
+![screen choix](https://photos.app.goo.gl/NDpS6wupw2gTfhiC6)
 
 ## Affichage du personnage et du premier monstre 
 
